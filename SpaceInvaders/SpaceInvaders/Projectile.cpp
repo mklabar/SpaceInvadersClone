@@ -9,9 +9,25 @@ Projectile::Projectile(float startX, float startY)
 	projectileShape.setPosition(position);
 }
 
+void Projectile::destroy()
+{
+	//move out of bounds
+	position.x = 2000;
+	position.y = 1000;
+	projectileShape.setPosition(position);
+
+	//set speed to zero
+	yVelocity = 0;
+}
+
 FloatRect Projectile::getPosition()
 {
 	return projectileShape.getGlobalBounds();
+}
+
+float Projectile::getSpeed()
+{
+	return yVelocity;
 }
 
 void Projectile::setPosition(float positionX, float positionY)

@@ -12,6 +12,7 @@ private:
 	float enemySpeed = 0;
 public:
 	Enemy(float startX, float startY);
+	void destroy();
 	FloatRect getPosition();
 	RectangleShape getShape();
 

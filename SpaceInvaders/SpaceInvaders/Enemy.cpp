@@ -8,6 +8,17 @@ Enemy::Enemy(float startX, float startY)
 	enemyShape.setPosition(position);
 }
 
+void Enemy::destroy()
+{
+	//move out of bounds
+	position.x = 2000;
+	position.y = 1000;
+	enemyShape.setPosition(position);
+
+	//set speed to zero
+	enemySpeed = 0;
+}
+
 FloatRect Enemy::getPosition()
 {
 	return enemyShape.getGlobalBounds();

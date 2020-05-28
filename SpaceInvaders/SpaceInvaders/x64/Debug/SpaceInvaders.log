@@ -1,14 +1,11 @@
 ﻿  SpaceInvaders.cpp
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(19,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(19,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(20,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(20,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(30,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(30,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(35,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(20,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(20,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(35,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(35,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(40,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(40,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(72,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(84,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(45,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(45,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\SpaceInvaders\SpaceInvaders.cpp(81,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SpaceInvaders.vcxproj -> C:\Users\Mary Kate\Desktop\Curriculum\SpaceInvaders\x64\Debug\SpaceInvaders.exe
