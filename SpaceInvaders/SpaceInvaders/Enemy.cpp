@@ -8,15 +8,17 @@ Enemy::Enemy(float startX, float startY)
 	enemyShape.setPosition(position);
 }
 
-void Enemy::destroy()
+void Enemy::setVisibility(bool isVisible)
 {
-	//move out of bounds
-	position.x = 2000;
-	position.y = 1000;
-	enemyShape.setPosition(position);
+	if (isVisible)
+		visible = true;
+	else
+		visible = false;
+}
 
-	//set speed to zero
-	enemySpeed = 0;
+bool Enemy::getVisibility()
+{
+	return visible;
 }
 
 FloatRect Enemy::getPosition()
@@ -29,17 +31,55 @@ RectangleShape Enemy::getShape()
 	return enemyShape;
 }
 
-void Enemy::moveLeft()
+void Enemy::toggleDirectionRight()
 {
-	//only move at certain intervals
+	//toggles the value to the opposite of what it was
+	movesRight = !movesRight;
 }
 
-void Enemy::moveRight()
+void Enemy::setDirectionDown(bool movingDown)
 {
-	//only move at certain intervals
+	movingDown = movesDown;
+}
+
+bool Enemy::move(int distance, int width)
+{
+	if (movesRight)
+	{
+		//if width - distance = 0 don't move
+		if (position.x < width - distance)
+		{
+			position.x += distance;
+			return true;
+		}
+
+	}
+	else
+	{
+		//if position - distance = 0 don't move
+		if (position.x > distance)
+		{
+			position.x -= distance;
+			return true;
+		}
+
+	}
+
+	//did not move due to wall collision
+	return false;
+}
+
+void Enemy::moveRight(int distance)
+{
+	position.x += distance;
+	
 }
 
 void Enemy::update()
 {
+	/*if (position.x < 1024 && position.x >= 0)
+		moveLeft(1);
+	else if (position.x < 0)
+		moveRight(1);*/
 	enemyShape.setPosition(position);
 }

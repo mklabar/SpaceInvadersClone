@@ -14,15 +14,12 @@ int main()
 {
 	int windowWidth = 1024;
 	int windowHeight = 768;
+	int currentFrame = 0;
 
 	RenderWindow window(VideoMode(windowWidth, windowHeight), "iD Invaders");
 
 	Ship ship(windowWidth / 2, windowHeight - 50);
-
-	//vector to store all ammo
-	std::vector<Projectile> projectiles;
-	size_t totalAmmo = projectiles.size();
-	
+	Projectile projectile(windowWidth / 2, windowHeight - 50);
 	
 	//vector to store all enemies
 	std::vector<Enemy> enemies;
@@ -75,55 +72,64 @@ int main()
 				ship.reboundRight();
 			}
 		}
-		if (Keyboard::isKeyPressed(Keyboard::Space)) 
+		if (Keyboard::isKeyPressed(Keyboard::Space) && !projectile.getVisibility()) 
 		{
-			//create a new projectile and add to vector
-			Projectile projectile(ship.getPosition().left + 50, windowHeight - 50);
-			projectiles.push_back(projectile);
-
-			//update vector length
-			totalAmmo = projectiles.size();
+			projectile.setPosition(ship.getPosition().left + 50, windowHeight - 50);
+			projectile.setVisibility(true);
+			projectile.setSpeed(.1f);
 		}
 
-
-		//check if any enemy intersects with any projectile
-		for (size_t i = 0; i < totalEnemies; i++)
+		//if the projectile is visible, check if it intersects an enemy
+		if (projectile.getVisibility()) 
 		{
-			for (size_t j = 0; j < totalAmmo; j++)
+			for (size_t j = 0; j < totalEnemies; j++)
 			{
-				if (projectiles[j].getPosition().intersects(enemies[i].getPosition()))
+				//if the enemy is visible, check intersection
+				if (projectile.getPosition().intersects(enemies[j].getPosition()) && enemies[j].getVisibility())
 				{
-					enemies[i].destroy();
-					projectiles[j].destroy();
+
+					enemies[j].setVisibility(false);
+					projectile.setVisibility(false);
 
 				}
-
 			}
-			
-
+			if (projectile.getPosition().top < 0)
+				projectile.setVisibility(false);
 		}
+		if (currentFrame % 60 == 0)
+		{
+			for (size_t i = 0; i < totalEnemies; i++)
+			{
+				if (enemies[i].move(1, windowWidth) == false)
+					enemies[i].toggleDirectionRight();
+					break;
+				
+			}
+		}
+
+
 		
-		
-	
+
 		window.clear(Color(148, 213, 0, 255));
 
-		for (size_t i = 0; i < totalAmmo; i++)
-		{
-			projectiles[i].update();
-			window.draw(projectiles[i].getShape());
-		}
+		ship.update();
+		window.draw(ship.getShape());
+
+		projectile.update();
+		//only draw if visibility is true
+		if(projectile.getVisibility())
+			window.draw(projectile.getShape());
 
 		for (size_t i = 0; i < totalEnemies; i++)
 		{
 			enemies[i].update();
-			window.draw(enemies[i].getShape());
+			//only draw if visibility is true
+			if(enemies[i].getVisibility())
+				window.draw(enemies[i].getShape());
 		}
-	
-		ship.update();
-		window.draw(ship.getShape());
 
-		
 		window.display();
+		currentFrame++;
 	}
 
 }

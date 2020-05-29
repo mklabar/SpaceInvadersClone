@@ -10,11 +10,13 @@ private:
 	RectangleShape projectileShape;
 
 	float xVelocity = 0;
-	float yVelocity = .1f;
+	float yVelocity = 0;
+	bool visible = false;
 
 public:
 	Projectile(float startX, float startY);
-	void destroy();
+	void setVisibility(bool isVisible);
+	bool getVisibility();
 	FloatRect getPosition();
 	float getSpeed();
 	void setPosition(float positionX, float positionY);

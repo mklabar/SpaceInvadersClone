@@ -9,15 +9,17 @@ Projectile::Projectile(float startX, float startY)
 	projectileShape.setPosition(position);
 }
 
-void Projectile::destroy()
+void Projectile::setVisibility(bool isVisible)
 {
-	//move out of bounds
-	position.x = 2000;
-	position.y = 1000;
-	projectileShape.setPosition(position);
+	if (isVisible)
+		visible = true;
+	else
+		visible = false;
+}
 
-	//set speed to zero
-	yVelocity = 0;
+bool Projectile::getVisibility()
+{
+	return visible;
 }
 
 FloatRect Projectile::getPosition()
