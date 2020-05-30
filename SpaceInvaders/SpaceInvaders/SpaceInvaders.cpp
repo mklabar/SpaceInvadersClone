@@ -15,6 +15,20 @@ int main()
 	int windowWidth = 1024;
 	int windowHeight = 768;
 	int currentFrame = 0;
+	system("dir");
+	//load in sprites for textures
+	Texture enemyTexture1;
+	Texture enemyTexture2;
+	Texture enemyTexture3;
+	enemyTexture1.loadFromFile("images/burger.png");
+	enemyTexture2.loadFromFile("images/hotdog.png");
+	enemyTexture3.loadFromFile("images/pizza.png");
+
+
+	Texture* pEnemyTexture1 = &enemyTexture1;
+	Texture* pEnemyTexture2 = &enemyTexture2;
+	Texture* pEnemyTexture3 = &enemyTexture3;
+
 
 	RenderWindow window(VideoMode(windowWidth, windowHeight), "iD Invaders");
 
@@ -29,17 +43,17 @@ int main()
 	{
 		if (i < 10) 
 		{
-			Enemy enemy(windowWidth / 5 + (75 * i), windowHeight / 5);
+			Enemy enemy(windowWidth / 5 + (75 * i), windowHeight / 5, pEnemyTexture1);
 			enemies.push_back(enemy);
 		}
 		else if (i < 20)
 		{
-			Enemy enemy(windowWidth / 5 + (75 * (i-10)), (windowHeight / 5) * 2);
+			Enemy enemy(windowWidth / 5 + (75 * (i-10)), (windowHeight / 5) * 2, pEnemyTexture2);
 			enemies.push_back(enemy);
 		}
 		else if (i < 30)
 		{
-			Enemy enemy(windowWidth / 5 + (75 * (i-20)), (windowHeight / 5) * 3);
+			Enemy enemy(windowWidth / 5 + (75 * (i-20)), (windowHeight / 5) * 3, pEnemyTexture3);
 			enemies.push_back(enemy);
 		}
 	}
@@ -100,10 +114,15 @@ int main()
 		{
 			for (size_t i = 0; i < totalEnemies; i++)
 			{
-				if (enemies[i].move(1, windowWidth) == false)
+				if (enemies[i].move(enemies[i].enemySpeed, windowWidth) == false) {
 					enemies[i].toggleDirectionRight();
-					break;
-				
+					for (size_t i = 0; i < totalEnemies; i++)
+					{
+						enemies[i].enemySpeed = 0;
+
+					}
+				}
+
 			}
 		}
 

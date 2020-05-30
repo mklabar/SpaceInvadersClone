@@ -10,7 +10,7 @@ private:
 	Vector2f position;
 	RectangleShape enemyShape;
 
-	float enemySpeed = 0;
+	
 	bool visible = true;
 
 	//if movesRight = false, direction is set to left 
@@ -19,7 +19,8 @@ private:
 	//if movesDown = false, direction is set to up
 	bool movesDown = true;
 public:
-	Enemy(float startX, float startY);
+	int enemySpeed = 1;
+	Enemy(float startX, float startY, Texture *texture);
 	void setVisibility(bool isVisible);
 	bool getVisibility();
 	FloatRect getPosition();

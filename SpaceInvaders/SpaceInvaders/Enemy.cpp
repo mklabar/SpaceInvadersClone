@@ -1,11 +1,12 @@
 #include "Enemy.h"
 
-Enemy::Enemy(float startX, float startY)
+Enemy::Enemy(float startX, float startY, Texture *texture)
 {
 	position.x = startX;
 	position.y = startY;
-	enemyShape.setSize(Vector2f(50, 50));
+	enemyShape.setSize(Vector2f(64, 64));
 	enemyShape.setPosition(position);
+	enemyShape.setTexture(texture);
 }
 
 void Enemy::setVisibility(bool isVisible)
