@@ -11,7 +11,7 @@ private:
 
 	float shipSpeed = .2f;
 public:
-	Ship(float startX, float startY);
+	Ship(float startX, float startY, Texture* texture);
 	FloatRect getPosition();
 	RectangleShape getShape();
 

@@ -1,11 +1,12 @@
 #include "Ship.h"
 
-Ship::Ship(float startX, float startY)
+Ship::Ship(float startX, float startY, Texture* texture)
 {
 	position.x = startX;
 	position.y = startY;
-	shipShape.setSize(Vector2f(100, 40));
+	shipShape.setSize(Vector2f(64, 64));
 	shipShape.setPosition(position);
+	shipShape.setTexture(texture);
 }
 
 FloatRect Ship::getPosition()

@@ -17,23 +17,20 @@ int main()
 	int currentFrame = 0;
 	system("dir");
 	//load in sprites for textures
-	Texture enemyTexture1;
-	Texture enemyTexture2;
-	Texture enemyTexture3;
-	enemyTexture1.loadFromFile("images/burger.png");
-	enemyTexture2.loadFromFile("images/hotdog.png");
-	enemyTexture3.loadFromFile("images/pizza.png");
+	Texture enemyTexture;
+	Texture playerTexture;
+	enemyTexture.loadFromFile("images/enemy_ship.png");
+	playerTexture.loadFromFile("images/player_ship.png");
 
 
-	Texture* pEnemyTexture1 = &enemyTexture1;
-	Texture* pEnemyTexture2 = &enemyTexture2;
-	Texture* pEnemyTexture3 = &enemyTexture3;
+	Texture* pEnemyTexture = &enemyTexture;
+	Texture* pPlayerTexture = &playerTexture;
 
 
 	RenderWindow window(VideoMode(windowWidth, windowHeight), "iD Invaders");
 
-	Ship ship(windowWidth / 2, windowHeight - 50);
-	Projectile projectile(windowWidth / 2, windowHeight - 50);
+	Ship ship(windowWidth / 2, windowHeight - 50, pPlayerTexture);
+	Projectile projectile(windowWidth / 2, windowHeight - 64);
 	
 	//vector to store all enemies
 	std::vector<Enemy> enemies;
@@ -43,17 +40,17 @@ int main()
 	{
 		if (i < 10) 
 		{
-			Enemy enemy(windowWidth / 5 + (75 * i), windowHeight / 5, pEnemyTexture1);
+			Enemy enemy(windowWidth / 5 + (75 * i), windowHeight / 5, pEnemyTexture);
 			enemies.push_back(enemy);
 		}
 		else if (i < 20)
 		{
-			Enemy enemy(windowWidth / 5 + (75 * (i-10)), (windowHeight / 5) * 2, pEnemyTexture2);
+			Enemy enemy(windowWidth / 5 + (75 * (i-10)), (windowHeight / 5) * 2, pEnemyTexture);
 			enemies.push_back(enemy);
 		}
 		else if (i < 30)
 		{
-			Enemy enemy(windowWidth / 5 + (75 * (i-20)), (windowHeight / 5) * 3, pEnemyTexture3);
+			Enemy enemy(windowWidth / 5 + (75 * (i-20)), (windowHeight / 5) * 3, pEnemyTexture);
 			enemies.push_back(enemy);
 		}
 	}
@@ -81,14 +78,14 @@ int main()
 		else if (Keyboard::isKeyPressed(Keyboard::Right)) 
 		{
 			ship.moveRight();
-			if (ship.getPosition().left + 100 > windowWidth)
+			if (ship.getPosition().left + 64 > windowWidth)
 			{
 				ship.reboundRight();
 			}
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Space) && !projectile.getVisibility()) 
 		{
-			projectile.setPosition(ship.getPosition().left + 50, windowHeight - 50);
+			projectile.setPosition(ship.getPosition().left + 32, windowHeight - 64);
 			projectile.setVisibility(true);
 			projectile.setSpeed(.1f);
 		}
@@ -130,6 +127,7 @@ int main()
 		
 
 		window.clear(Color(148, 213, 0, 255));
+		
 
 		ship.update();
 		window.draw(ship.getShape());
